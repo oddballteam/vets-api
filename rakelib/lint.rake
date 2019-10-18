@@ -1,28 +1,54 @@
 # frozen_string_literal: true
 
-require 'open3'
-require './rakelib/support/shell_command'
-
-desc 'shortcut to run all linting tools, at the same time.'
-task :lint do
+unless Rails.env.production?
   require 'rainbow'
 
-  opts = if ENV['CI']
-           "-r rubocop/formatter/junit_formatter.rb \
-           --format RuboCop::Formatter::JUnitFormatter --out log/rubocop.xml \
-           --format clang"
-         else
-           '--display-cop-names --auto-correct'
-         end
+  namespace :lint do
+    desc 'vets-api | lint | Run rails_best_practices'
+    task :rails_best_practices do
+      Rake::Task['rails_best_practices'].invoke
+    end
 
-  puts 'running rubocop...'
-  rubocop_result = ShellCommand.run("rubocop #{opts} --color")
+    desc 'vets-api | lint | Run reek'
+    task :reek do
+      Rake::Task['reek'].invoke
+    end
 
-  puts "\n"
-  if rubocop_result
-    puts Rainbow('Passed. Everything looks stylish!').green
-  else
-    puts Rainbow('Failed. Linting issues were found.').red
-    exit!(1)
+    desc 'vets-api | lint | Run rubocop'
+    task :rubocop do
+      Rake::Task['rubocop'].invoke
+    end
+
+    desc 'vets-api | lint | Run several lint checks'
+    task :all do
+      status = 0
+
+      tasks = %w[
+        lint:rubocop
+        lint:rails_best_practices
+        lint:reek
+      ]
+
+      tasks.each do |task|
+        pid = Process.fork do
+          begin
+            puts Rainbow("*** Running task: #{task} ***").cadetblue
+
+            Rake::Task[task].invoke
+          rescue SystemExit => e
+            warn Rainbow("!!! Task #{task} exited:").red
+            raise e
+          rescue StandardError, ScriptError => e
+            warn Rainbow("!!! Task #{task} raised #{ex.class}:").bg(:red).white
+            raise e
+          end
+        end
+
+        Process.waitpid(pid)
+        status += $?.exitstatus
+      end
+
+      exit(status)
+    end
   end
 end

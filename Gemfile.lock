@@ -212,6 +212,10 @@ GEM
       open4 (~> 1.3)
     clam_scan (0.0.2)
     cliver (0.3.2)
+    code_analyzer (0.4.8)
+      sexp_processor
+    codeclimate-engine-rb (0.4.1)
+      virtus (~> 1.0)
     coderay (1.1.2)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -381,6 +385,7 @@ GEM
     kramdown (2.1.0)
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    kwalify (0.7.2)
     levenshtein-ffi (1.1.0)
       ffi (~> 1.9)
     liquid (4.0.0)
@@ -459,6 +464,7 @@ GEM
     pry-byebug (3.7.0)
       byebug (~> 11.0)
       pry (~> 0.10)
+    psych (3.1.0)
     public_suffix (3.1.1)
     puma (3.12.0)
     pundit (1.1.0)
@@ -494,6 +500,14 @@ GEM
       loofah (~> 2.3)
     rails-session_cookie (0.2.2)
       rails (>= 4.0)
+    rails_best_practices (1.19.4)
+      activesupport
+      code_analyzer (>= 0.4.8)
+      erubis
+      i18n
+      json
+      require_all (~> 2.0)
+      ruby-progressbar
     rails_semantic_logger (4.4.0)
       rails (>= 3.2)
       semantic_logger (~> 4.4)
@@ -511,6 +525,13 @@ GEM
     redis (3.3.5)
     redis-namespace (1.5.3)
       redis (~> 3.0, >= 3.0.4)
+    reek (5.4.0)
+      codeclimate-engine-rb (~> 0.4.0)
+      kwalify (~> 0.7.0)
+      parser (>= 2.5.0.0, < 2.7, != 2.5.1.1)
+      psych (~> 3.1.0)
+      rainbow (>= 2.0, < 4.0)
+    require_all (2.0.0)
     restforce (3.0.0)
       faraday (>= 0.9.0, <= 1.0)
       faraday_middleware (>= 0.8.8, <= 1.0)
@@ -587,6 +608,7 @@ GEM
       concurrent-ruby (~> 1.0)
     sentry-raven (2.9.0)
       faraday (>= 0.7.6, < 1.0)
+    sexp_processor (4.13.0)
     shellany (0.0.1)
     shrine (2.16.0)
       content_disposition (~> 1.0)
@@ -775,10 +797,12 @@ DEPENDENCIES
   rack-vcr
   rails (~> 5.2.3)
   rails-session_cookie
+  rails_best_practices
   rails_semantic_logger (~> 4.4)
   rainbow
   redis
   redis-namespace
+  reek
   restforce
   rgeo-geojson
   rspec-rails (~> 3.5)

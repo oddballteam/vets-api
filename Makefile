@@ -40,7 +40,7 @@ guard:
 
 .PHONY: lint
 lint:
-	@$(BASH_DEV) "bin/rails lint"
+	@$(BASH_DEV) "bin/rails lint:all"
 
 .PHONY: migrate
 migrate:
@@ -60,7 +60,7 @@ server:
 
 .PHONY: spec
 spec:
-	@$(BASH_TEST) "bin/rspec ${SPEC_PATH}"
+	@$(BASH_TEST) "bin/rails spec"
 
 .PHONY: up
 up: db
