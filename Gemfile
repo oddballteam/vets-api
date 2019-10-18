@@ -131,8 +131,8 @@ end
 
 group :development, :test do
   gem 'awesome_print', '~> 1.8' # Pretty print your Ruby objects in full color and with proper indentation
-  gem 'brakeman'
-  gem 'bundler-audit'
+  gem 'brakeman', require: false
+  gem 'bundler-audit', require: false
   gem 'byebug', platforms: :ruby # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'danger'
   gem 'database_cleaner'
@@ -147,11 +147,13 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'rack-test', require: 'rack/test'
   gem 'rack-vcr'
-  gem 'rainbow' # Used to colorize output for rake tasks
+  gem 'rainbow', require: false # Used to colorize output for rake tasks
+  gem 'rails_best_practices', require: false
+  gem 'reek', require: false
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', require: false
-  gem 'rubocop-rails'
-  gem 'rubocop-rspec'
+  gem 'rubocop-rails', require: false
+  gem 'rubocop-rspec', require: false
   gem 'sidekiq', '~> 4.2'
   gem 'timecop'
   gem 'webmock'
