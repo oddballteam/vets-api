@@ -149,7 +149,6 @@ group :development, :test do
   gem 'rack-vcr'
   gem 'rainbow', require: false # Used to colorize output for rake tasks
   gem 'rails_best_practices', require: false
-  gem 'reek', require: false
   gem 'rspec-rails', '~> 3.5'
   gem 'rubocop', require: false
   gem 'rubocop-rails', require: false

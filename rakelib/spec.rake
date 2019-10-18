@@ -20,7 +20,7 @@ namespace :spec do
     t.rspec_opts = args[:rspec_opts]
   end
 
-  desc 'run rspec tests and report results to CodeClimate'
+  desc 'vets-api | rspec | Run all tests and report results to CodeClimate'
   task with_codeclimate_coverage: :environment do
     if ENV['CC_TEST_REPORTER_ID']
       puts 'notifying CodeClimate of test run'
