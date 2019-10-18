@@ -1,5 +1,6 @@
 --color
 --require spec_helper
+--fail-fast
 --format Fuubar
 <% if ENV['CI'] %>
 --format RspecJunitFormatter

@@ -1,0 +1,9 @@
+--require spec_helper
+--fail-fast
+--format progress
+--format ParallelTests::RSpec::SummaryLogger --out tmp/spec_summary.log
+--color
+<% if ENV['CI'] %>
+--format RspecJunitFormatter
+--out log/rspec-<%= ENV['TEST_ENV_NUMBER'] %>.xml
+<% end %>

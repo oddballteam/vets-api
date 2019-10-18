@@ -12,7 +12,7 @@ RSpec.configure do |config|
   end
 
   config.before(:all, :cleaner_for_context) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.start
   end
 
@@ -21,7 +21,7 @@ RSpec.configure do |config|
 
     DatabaseCleaner.strategy =
       if example.metadata[:js]
-        :truncation
+        :transaction
       else
         example.metadata[:strategy] || :transaction
       end
@@ -33,8 +33,6 @@ RSpec.configure do |config|
     next if example.metadata[:cleaner_for_context]
 
     DatabaseCleaner.clean
-
-    # raise DirtyDatabaseError.new(example.metadata) if Record.count > 0
   end
 
   config.after(:all, :cleaner_for_context) do

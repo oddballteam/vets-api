@@ -142,8 +142,8 @@ group :development, :test do
   gem 'faraday_curl'
   gem 'foreman'
   gem 'fuubar'
-  gem 'guard-rspec', '~> 4.7'
   gem 'overcommit'
+  gem 'parallel_tests'
   gem 'pry-byebug'
   gem 'rack-test', require: 'rack/test'
   gem 'rack-vcr'
@@ -156,6 +156,7 @@ group :development, :test do
   gem 'timecop'
   gem 'webmock'
   gem 'yard'
+  gem 'zeus-parallel_tests'
 end
 
 group :production do

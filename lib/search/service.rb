@@ -4,8 +4,8 @@ require 'common/client/base'
 require 'search/response'
 
 module Search
-  # This class builds a wrapper around Search.gov web results API. Creating a new instance of class
-  # will and calling #results will return a ResultsResponse upon success or an exception upon failure.
+  # This class builds a wrapper around Search.gov web results API. Create a new instance of class
+  # and call `#results` to return a `ResultsResponse`
   #
   # @see https://search.usa.gov/sites/7378/api_instructions
   #
