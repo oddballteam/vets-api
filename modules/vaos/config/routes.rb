@@ -7,6 +7,8 @@ VAOS::Engine.routes.draw do
     resources :systems, only: :index
     resources :facilities, only: :index do
       resources :clinics, only: :index
+      get 'visits/direct', to: 'visits#direct'
+      get 'visits/request', to: 'visits#request'
     end
     get 'api', to: 'apidocs#index'
   end
