@@ -14,6 +14,6 @@ features:
   profile_show_receive_text_notifications:
     description: >
       https://www.va.gov/profile/ show Receive Text Notifications
-  mvi_id_parser:
+  va_online_scheduling:
     description: >
-      logic changes for parsing IDs from MVI responses
+      Allows veterans to schedule, request and track VA and Community Care appointments
