@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'evss/error_middleware'
 
 module EVSS
   module Letters
@@ -15,7 +16,7 @@ module EVSS
       def connection
         @conn ||= Faraday.new(base_path, request: request_options, ssl: ssl_options) do |faraday|
           faraday.use :breakers
-          faraday.use EVSS::ErrorMiddleware
+          faraday.response :evss_errors
           faraday.use :immutable_headers
           faraday.adapter Faraday.default_adapter
         end

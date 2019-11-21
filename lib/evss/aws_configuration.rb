@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'evss/error_middleware'
 
 module EVSS
   class AWSConfiguration < Common::Client::Configuration::REST
@@ -18,7 +19,7 @@ module EVSS
       req_options = Settings.faraday_socks_proxy.enabled ? request_options.merge(proxy_options) : request_options
       @conn ||= Faraday.new(base_path, request: req_options, ssl: ssl_options) do |faraday|
         faraday.use      :breakers
-        faraday.use      EVSS::ErrorMiddleware
+        faraday.response :evss_errors
         faraday.use      Faraday::Response::RaiseError
         faraday.response :betamocks if mock_enabled?
         faraday.response :snakecase, symbolize: false

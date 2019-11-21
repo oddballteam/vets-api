@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'common/client/configuration/rest'
+require 'evss/error_middleware'
 
 module EVSS
   class Configuration < Common::Client::Configuration::REST
@@ -41,7 +42,7 @@ module EVSS
 
     def set_evss_middlewares(faraday, snakecase: true)
       faraday.use      :breakers
-      faraday.use      EVSS::ErrorMiddleware
+      faraday.response :evss_errors
       faraday.use      Faraday::Response::RaiseError
       faraday.response :betamocks if mock_enabled?
       faraday.response :snakecase, symbolize: false if snakecase

@@ -41,3 +41,5 @@ module EVSS
     end
   end
 end
+
+Faraday::Response.register_middleware evss_errors: EVSS::ErrorMiddleware
