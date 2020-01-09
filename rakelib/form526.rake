@@ -183,7 +183,15 @@ namespace :form526 do
       submission = Form526Submission.find(id)
 
       saved_claim_form = JSON.parse(submission.saved_claim.form)
-      saved_claim_form['veteran'] = 'FILTERED'
+
+      %w[
+        veteran bankAccountNumber
+        bankAccountType bankName
+        bankRoutingNumber alternateNames
+        phoneAndEmail mailingAddress
+      ].each do |field|
+        saved_claim_form[field] = 'FILTERED' if saved_claim_form[field].present?
+      end
 
       auth_headers = JSON.parse(submission.auth_headers_json)
       # There have been prod instances of users not having a ssn
