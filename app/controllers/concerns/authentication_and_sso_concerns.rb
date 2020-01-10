@@ -107,7 +107,6 @@ module AuthenticationAndSSOConcerns
   # https://github.com/department-of-veterans-affairs/vets.gov-team/blob/master/Products/SSO/CookieSpecs-20180906.docx
   def sso_cookie_content
     return nil if @current_user.blank?
-
     {
       'patientIcn' => (@current_user.mhv_icn || @current_user.icn),
       'mhvCorrelationId' => @current_user.mhv_correlation_id,
@@ -123,7 +122,6 @@ module AuthenticationAndSSOConcerns
       'myhealthevet' => 'my_healthe_vet',
       'dslogon' => 'ds_logon',
       'idme' => 'id_me',
-      'ssoe' => 'ssoe'
     }.fetch(@current_user.identity.sign_in.fetch(:service_name))
   end
 
