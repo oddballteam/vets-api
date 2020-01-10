@@ -116,7 +116,6 @@ module V1
         # track users who need to re-login on MHV
         StatsD.increment(STATSD_MHV_COOKIE_NO_ACCOUNT_KEY) unless @current_user.mhv_correlation_id
         after_login_actions
-        binding.pry
         redirect_to url_service.login_redirect_url
         stats(:success, saml_response)
       else

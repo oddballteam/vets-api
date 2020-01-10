@@ -41,7 +41,6 @@ module SAML
 
       # This includes service_name used to sign-in initially, and the account type that is associated with the sign in.
       def sign_in
-        binding.pry
         SAML::User::AUTHN_CONTEXTS.fetch(authn_context)
                                   .fetch(:sign_in)
                                   .merge(account_type: account_type)
