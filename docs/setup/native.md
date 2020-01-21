@@ -14,7 +14,8 @@ To start, fetch this code:
 `git clone https://github.com/department-of-veterans-affairs/vets-api.git`
 
 <div id="clone-vets-api">
-  <script id="asciicast-RUjdzdl2QoKAtByJy8aFUNvci" src="https://asciinema.org/a/RUjdzdl2QoKAtByJy8aFUNvci.js" data-speed="3" async></script>
+<script id="asciicast-RUjdzdl2QoKAtByJy8aFUNvci" src="https://asciinema.org/a/RUjdzdl2QoKAtByJy8aFUNvci.js" data-speed="3" async>
+</script>
 </div>
 
 #### Automated (OSX)
