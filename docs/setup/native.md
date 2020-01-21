@@ -12,6 +12,7 @@ Vets API requires:
 To start, fetch this code:
 
 `git clone https://github.com/department-of-veterans-affairs/vets-api.git`
+[![asciicast](https://asciinema.org/a/RUjdzdl2QoKAtByJy8aFUNvci.svg)](https://asciinema.org/a/RUjdzdl2QoKAtByJy8aFUNvci?speed=3)
 
 
 #### Automated (OSX)
@@ -30,6 +31,7 @@ the `vets-api` directory, run `./bin/setup-osx && source ~/.bash_profile && cd
     console output. Make sure to follow those too.
 2. Install Bundler to manage dependencies
    - `gem install bundler`
+   - [![asciicast](https://asciinema.org/a/FvrKFQEn7LPU2uJWEwKs4qWdD.svg)](https://asciinema.org/a/FvrKFQEn7LPU2uJWEwKs4qWdD?speed=3)
 3. Install Postgres and enable on startup
    - `brew install postgres`
    - `brew services start postgres`
