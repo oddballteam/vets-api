@@ -2,6 +2,7 @@
 
 module EVSS
   module DisabilityCompensationForm
+    # TODO This might be able to be updated?
     # Configuration for the all claims version of the 526 form. When all claims is deployed live on production
     # it will live on the same service again as the rest of the end points and `alternate_service_name` can be removed
     #

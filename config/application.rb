@@ -12,7 +12,7 @@ require 'action_mailer/railtie'
 # require "action_view/railtie"
 # require "sprockets/railtie"
 require_relative '../lib/http_method_not_allowed'
-require_relative '../lib/statsd_middleware'
+require_relative '../lib/instrumentation_middleware'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -62,7 +62,7 @@ module VetsAPI
 
     config.middleware.insert_before(0, HttpMethodNotAllowed)
     config.middleware.use OliveBranch::Middleware, inflection_header: 'X-Key-Inflection'
-    config.middleware.use StatsdMiddleware
+    config.middleware.use Instrumentation::Middleware
     config.middleware.use Rack::Attack
     config.middleware.use ActionDispatch::Cookies
     config.middleware.insert_after ActionDispatch::Cookies,

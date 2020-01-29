@@ -78,6 +78,9 @@ module Common
              !handlers.include?(Common::Client::Middleware::Request::RemoveCookies)
             raise SecurityError, 'http client needs cookies stripped'
           end
+#
+          # warn("Instrumentation is not enabled for service: #{config.service_name}") unless handlers.include?(FaradayMiddleware::Instrumentation)
+          # handlers << FaradayMiddleware::Instrumentation
 
           if handlers.include?(Breakers::UptimeMiddleware)
             return connection if handlers.first == Breakers::UptimeMiddleware

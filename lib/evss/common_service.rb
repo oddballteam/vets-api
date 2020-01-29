@@ -17,6 +17,7 @@ module EVSS
     end
 
     def get_current_info
+      # This is duped in ../vso_search/service.rb
       post 'vsoSearch/11.6/getCurrentInfo'
     end
 

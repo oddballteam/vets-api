@@ -1,0 +1,23 @@
+mappings:
+  - match: "api.external_http_request.*.time"
+    name: "api_external_http_request_duration_seconds"
+    service: "$1"
+
+  - match: "api.external_http_request.*.success"
+    name: "api_external_http_request_success_total"
+    service: "$1"
+
+  - match: "api.external_http_request.*.failed"
+    name: "api_external_http_request_failure_total"
+    service: "$1"
+
+  - match: "api.external_http_request.*.skipped"
+    name: "api_external_http_request_skipped_total"
+    service: "$1"
+
+  - match: "api.external_service.*.up"
+    name: "api_external_service_up"
+    service: "$1"
+
+  - match: "shared.sidekiq.stats.failed"
+    name: "api_jobs_failed_total"

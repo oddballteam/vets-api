@@ -19,10 +19,10 @@ To start, fetch this code:
    - Copy the [key][key] to `config/certs/vetsgov-localhost.key`
    - *NOTE:* using `touch` to create blank cert and key files no longer works.
    If you previously added certs in this manner replace them with the team repo certificate and key listed above.
-   
+
    [certificate]: https://github.com/department-of-veterans-affairs/va.gov-team/blob/master/products/identity-personalization/login/idme/development-certificates/vetsgov-localhost.crt
    [key]: https://github.com/department-of-veterans-affairs/va.gov-team/blob/master/products/identity-personalization/login/idme/development-certificates/vetsgov-localhost.key
- 
+
 ## Running the app
 
 A Makefile provides shortcuts for interacting with the docker images. To run vets-api and its redis and postgres
@@ -38,7 +38,7 @@ ERROR: Service 'vets-api' failed to build: The command '/bin/bash --login -c bun
 make: *** [db] Error 1
 ```
 
-Sidekiq Enterprise is used for worker rate limiting and additional reliability. Most
+`vets-api` leverages Sidekiq Enterprise for its superior worker rate limiting and reliability. Most
 developers can bypass the installation of Sidekiq Enterprise with
 
 - `$ EXCLUDE_SIDEKIQ_ENTERPRISE=true make rebuild`
@@ -55,14 +55,14 @@ make up
 You should then be able to navigate to [http://localhost:3000/v0/status](http://localhost:3000/v0/status) in your
 browser and start interacting with the API. Changes to the source in your local
 directory will be reflected automatically via a docker volume mount, just as
-they would be when running rails directly.
+they would be when running `rails` directly.
 
-The [Makefile](https://github.com/department-of-veterans-affairs/vets-api/blob/master/Makefile) has shortcuts for many common development tasks. You can still run manual [docker-compose commands](https://docs.docker.com/compose/),
-but the following tasks have been aliased to speed development:
+The [Makefile](https://github.com/department-of-veterans-affairs/vets-api/blob/master/Makefile) has shortcuts for  common development tasks. You can still run manual [`docker-compose` commands](https://docs.docker.com/compose/),
+but the following tasks have aliases to speed development:
 
 ### Running tests
-- `make spec` - Run the entire test suite via the docker image (alias for `rspec spec`). Test coverage statistics are in `coverage/index.html` or in [CodeClimate](https://codeclimate.com/github/department-of-veterans-affairs/vets-api/code)
-- `make guard` - Run the guard test server that reruns your tests after files are saved. Useful for TDD!
+- `make spec` - Run the entire test suite via the docker image (alias for `rspec spec`). Test coverage statistics are in `coverage/index.html` or in [CodeClimate](https://codeclimate.com/github/department-of-veterans-affairs/vets-api/code), note this doesn't run spec files found in module subfolders.
+- `make guard` - Run the `guard` test server that reruns tests after it detects filechanges. Useful for TDD!
 
 ### Running linters
 
@@ -71,12 +71,12 @@ but the following tasks have been aliased to speed development:
 - `make ci` - Run all build steps performed in CI.
 
 ### Running a rails interactive console
-- `make console` - Is an alias for `rails console`, which runs an IRB like REPL in which all of the API's classes and 
+- `make console` - Is an alias for `rails console`, which runs an IRB like REPL in which all of the API's classes and
 environmental variables have been loaded.
 
 ### Running a bash shell
-To emulate a local install's workflow where you can run `rspec`, `rake`, or `rails` commands 
-directly within the vets-api docker instance you can use the `make bash` command.
+To emulate a locally installed workflow where you can run `rspec`, `rake`, or `rails` commands
+directly within the `vets-api` Docker instance you can use the `make bash` command.
 
 ```bash
 $ make bash
@@ -89,7 +89,7 @@ root@63aa89d76c17:/src/vets-api# rspec spec/requests/user_request_spec.rb:26
 
 ## Configuration
 
-Vets API is configured with [Config](https://github.com/railsconfig/config). The
+`vets-api` configuration is provided by the [Config gem](https://github.com/railsconfig/config). The
 default configuration is contained in [settings.yml](config/settings.yml). To
 customize your setup, you can create a `config/settings.local.yml` file with
 configuration specific to your needs. For example, to configure Redis and
@@ -107,10 +107,10 @@ This is also where you will place any other customizations, such as API tokens
 or certificate paths.
 
 Config settings that vary in value depending on the deployment environment will also need
-to be set appropriately for each environment in the relevant 
-[devops (Private Repo)](https://github.com/department-of-veterans-affairs/devops/blob/master/ansible/deployment/config/vets-api) configurations (dev-, staging-, and prod-settings.local.yml.j2). 
+to be set appropriately for each environment in the relevant
+[devops (Private Repo)](https://github.com/department-of-veterans-affairs/devops/blob/master/ansible/deployment/config/vets-api) configurations (dev-, staging-, and prod-settings.local.yml.j2).
 
-Some examples of configuration that will need to be added to these files are:
+Some examples of configuration that need setting in these files are:
 
 * API keys/tokens
 * 3rd party service hostnames, ports, and certificates/keys.
@@ -129,7 +129,7 @@ The following features require additional configuration, click for details.
 To mock one or more of the above services see [Betamocks](/docs/setup/betamocks.md)
 
 Vets API will still run in a limited capacity without configuring any of these
-features, and will run the unit tests successfully.
+features, and will run the unit tests.
 
 ### Troubleshooting
 
