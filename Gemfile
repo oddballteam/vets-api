@@ -127,7 +127,6 @@ group :test do
   gem 'apivore'
   gem 'awrence'
   gem 'faker'
-  gem 'faker-medical'
   gem 'fakeredis'
   gem 'pdf-inspector'
   gem 'rspec_junit_formatter'
