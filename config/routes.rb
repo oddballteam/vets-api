@@ -308,6 +308,7 @@ Rails.application.routes.draw do
     mount VaForms::Engine, at: '/va_forms'
     mount VeteranVerification::Engine, at: '/veteran_verification'
     mount VeteranConfirmation::Engine, at: '/veteran_confirmation'
+    mount EfolderApi::Engine, at: '/efolder'
   end
 
   mount VAOS::Engine, at: '/v0/vaos'

@@ -61,6 +61,14 @@ PATH
       rails (~> 5.2.3)
 
 PATH
+  remote: modules/efolder_api
+  specs:
+    efolder_api (0.1.0)
+      carrierwave-aws
+      rails (~> 5.2.4, >= 5.2.4.1)
+      sidekiq
+
+PATH
   remote: modules/openid_auth
   specs:
     openid_auth (0.0.1)
@@ -784,6 +792,7 @@ DEPENDENCIES
   date_validator
   dry-struct
   dry-types
+  efolder_api!
   factory_bot_rails (> 5)
   faker
   faker-medical
