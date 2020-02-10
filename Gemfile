@@ -137,7 +137,6 @@ group :test do
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'awesome_print', '~> 1.8' # Pretty print your Ruby objects in full color and with proper indentation
   gem 'brakeman', '~> 4.7'
   gem 'bundler-audit'
@@ -145,6 +144,7 @@ group :development, :test do
   gem 'danger'
   gem 'database_cleaner'
   gem 'factory_bot_rails', '> 5'
+  gem 'faker'
   # CAUTION: faraday_curl may not provide all headers used in the actual faraday request. Be cautious if using this to
   # assist with debugging production issues (https://github.com/department-of-veterans-affairs/vets.gov-team/pull/6262)
   gem 'faraday_curl'
