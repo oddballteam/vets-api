@@ -481,3 +481,12 @@ vbms:
   server_cert: vbms.aide.oit.va.gov.crt
   environment_directory: /srv/vets-api/secret
   env: test
+
+efolder_api:
+  url: 'https://'
+  s3:
+    enabled: false
+    aws_access_key_id: 'aws_access_key_id'
+    aws_secret_access_key: 'aws_secret_access_key'
+    region: 'region'
+    bucket: 'bucket'
