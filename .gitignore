@@ -12,7 +12,13 @@
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
+/casts
+
+# Ignore generated reports for this work project
+/claims-status/reports/*
+
 # Ignore all logfiles and tempfiles.
+/claims-status/raw-logs/*
 /log/*
 !/log/.keep
 /logfile

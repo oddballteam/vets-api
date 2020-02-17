@@ -1,10 +1,32 @@
 # frozen_string_literal: true
 
-# REVIEW name of this task namespace (and file name)
-namespace :claims_status_lookup do
 
+
+# REVIEW name of this task namespace (and file name)
+namespace :reports do
   desc 'PUT A GREAT DESCRIPTION HERE AND UPDATE NAME'
-  task :go do
+  task :evss_claim_status_inquiries_over_time do
+    ####
+    ####
+    ####
+    # This task is written as a temporary solution to gathering the data we need from the production server
+    # in case of reoccuring requests, and as a tool to help making processing the remainder of the 30 days
+    # originally requested from the client.
+    #
+    # How we do it for now
+    #
+    # 1. Get the logs we want
+    #  - We're using the aws-cloudwatch-logs gem to do this
+    #  - We extricate these logs, based on a filter pattern (which should be abstraced out)
+    #  - This job initially will write the logs to local disk, but we will be working towards S3 and
+    #    doing processing with the ruby lambda environment
+    #  - Once logs are local we can process them, removing the instance and docker prefixes:
+    # `sed 's/^.*|\(.*$\)/\1/' -i `
+    #  - This leaves us with json objects separated by newlines,
+    #     we then use jq to extract values from our log streams
+
+
+
     # these values aren't local, create /WHEREVER/vets-api/config/settings.local.yml for development
     client = Aws::CloudWatchLogs::Client.new(
       region: Settings.evss.s3.region,
