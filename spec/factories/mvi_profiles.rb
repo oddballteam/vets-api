@@ -42,7 +42,7 @@ FactoryBot.define do
     suffix { Faker::Name.suffix }
     gender { %w[M F].sample }
     birth_date { Faker::Date.between(from: 80.years.ago, to: 30.years.ago).strftime('%Y%m%d') }
-    ssn { (1..1000).to_a.shuffle.join.to_s[0, 9] }
+    ssn { 9.times.map { rand(0..9) }.join }
     address { build(:mvi_profile_address) }
     home_phone { Faker::PhoneNumber.phone_number }
     full_mvi_ids {
