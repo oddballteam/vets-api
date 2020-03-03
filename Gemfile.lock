@@ -513,6 +513,9 @@ GEM
       ruby-rc4
       ttfunk
     pg (1.2.0)
+    pg_query (1.2.0)
+    pghero (2.4.1)
+      activerecord (>= 5)
     prawn (2.2.2)
       pdf-core (~> 0.7.0)
       ttfunk (~> 1.5)
@@ -835,6 +838,8 @@ DEPENDENCIES
   pdf-inspector
   pdf-reader
   pg
+  pg_query (>= 0.9.0)
+  pghero
   prawn
   pry-byebug
   puma (~> 4.3.1)
