@@ -46,6 +46,17 @@ describe VAOS::Middleware::VaosLogging do
                                                   url: '(GET) https://veteran.apps.va.gov/whatever').and_call_original
       client.get(all_other_uris)
     end
+
+    context 'when jti decoding fails' do
+      it 'logs the error' do
+        allow(::JWT).to receive(:decode).and_raise(JWT::DecodeError)
+        expect(Rails.logger).to receive(:warn).with(
+          'VAOS could not determine jti',
+          error: { message: 'JWT::DecodeError', type: 'JWT::DecodeError' }
+        )
+        client.get(all_other_uris)
+      end
+    end
   end
 
   context 'with status failed' do

@@ -80,7 +80,8 @@ module VAOS
         else
           decode_jwt_no_sig_check(env.response_headers['X-Vamf-Jwt'])['jti']
         end
-      rescue
+      rescue => e
+        Rails.logger.warn('VAOS could not determine jti', error: { type: e.to_s, message: e.message }, response_headers: env.response_headers)
         'unknown jti'
       end
     end
