@@ -21,10 +21,10 @@ To start, fetch this code:
 touch config/certs/vetsgov-localhost.crt
 touch config/certs/vetsgov-localhost.key
 ```
-   
+
 1. Disable signed authentication requests:
 
-   
+
 ```yaml
 # settings.local.yml
 saml:
@@ -33,7 +33,7 @@ saml:
 
 [For more info on crypto & authentication, including how to enable crypto for localhost authentication](/docs/setup/authentication_with_idme.md)
 
- 
+
 ## Running the app
 
 A Makefile provides shortcuts for interacting with the docker images. To run vets-api and its redis and postgres
@@ -82,11 +82,11 @@ but the following tasks have been aliased to speed development:
 - `make ci` - Run all build steps performed in CI.
 
 ### Running a rails interactive console
-- `make console` - Is an alias for `rails console`, which runs an IRB like REPL in which all of the API's classes and 
+- `make console` - Is an alias for `rails console`, which runs an IRB like REPL in which all of the API's classes and
 environmental variables have been loaded.
 
 ### Running a bash shell
-To emulate a local install's workflow where you can run `rspec`, `rake`, or `rails` commands 
+To emulate a local install's workflow where you can run `rspec`, `rake`, or `rails` commands
 directly within the vets-api docker instance you can use the `make bash` command.
 
 ```bash
@@ -118,8 +118,8 @@ This is also where you will place any other customizations, such as API tokens
 or certificate paths.
 
 Config settings that vary in value depending on the deployment environment will also need
-to be set appropriately for each environment in the relevant 
-[devops (Private Repo)](https://github.com/department-of-veterans-affairs/devops/blob/master/ansible/deployment/config/vets-api) configurations (dev-, staging-, and prod-settings.local.yml.j2). 
+to be set appropriately for each environment in the relevant
+[devops (Private Repo)](https://github.com/department-of-veterans-affairs/devops/blob/master/ansible/deployment/config/vets-api) configurations (dev-, staging-, and prod-settings.local.yml.j2).
 
 Some examples of configuration that will need to be added to these files are:
 
