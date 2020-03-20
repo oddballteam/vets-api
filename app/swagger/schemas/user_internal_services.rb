@@ -32,7 +32,7 @@ module Swagger
               end
             end
             property :profile, type: :object do
-              property :email, type: :string
+              property :email, type: :string, example: 'vet@va.gov'
               property :first_name, type: :string, example: 'Abigail'
               property :middle_name, type: :string, example: 'Jane'
               property :last_name, type: :string, example: 'Brown'

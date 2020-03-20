@@ -37,21 +37,26 @@ module Swagger
                     property :type, type: :string
                     property :attributes, type: :object do
                       property :account, type: %i[object null]
-                      property :va_profile, type: %i[object null]
+                      property :va_profile, type: :object do
+                        property :account_uuid,
+                                 type: %i[string null],
+                                 example: 'b2fab2b5-6af0-45e1-a9e2-394347af91ef',
+                                 description:
+                                   'A UUID correlating all user identifiers. Intended to become the user\'s UUID.'
+                      end
                       property :veteran_status, type: %i[object null]
                       property :vet360_contact_information, type: %i[object null]
                     end
                   end
                   property :meta, type: :object do
                     key :required, [:errors]
-                    property :errors do
-                      key :type, :array
+                    property :errors, type: :array do
                       items do
-                        property :external_service, type: :string
-                        property :start_time, type: :string
+                        property :external_service, type: :string, example: 'MVI'
+                        property :start_time, type: :string, example: '2020-03-15T17:01:22Z'
                         property :end_time, type: %i[string null]
-                        property :description, type: :string
-                        property :status, type: :integer
+                        property :description, type: :string, example: '401, 401, Not authorized, Not authorized'
+                        property :status, type: :integer, example: 401
                       end
                     end
                   end
@@ -73,11 +78,11 @@ module Swagger
           schema do
             property :data, type: :object do
               property :id, type: :string
-              property :type, type: :string
+              property :type, type: :string, example: 'users_scaffolds'
               property :attributes, type: :object do
                 property :account, type: :object do
                   property :account_uuid,
-                           type: %w[string null],
+                           type: %i[string null],
                            example: 'b2fab2b5-6af0-45e1-a9e2-394347af91ef',
                            description: 'A UUID correlating all user identifiers. Intended to become the user\'s UUID.'
                 end

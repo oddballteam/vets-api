@@ -18,23 +18,26 @@ module Swagger
                   property :created_at,
                            type: :string,
                            format: 'date-time',
-                           example: '2018-04-21T20:09:50Z'
+                           example: '2019-08-21T20:18:36.000+00:00'
                   property :effective_end_date,
                            type: %i[string null],
                            format: 'date-time',
-                           example: '2018-04-21T20:09:50Z'
+                           example: '2019-08-21T20:18:36.000+00:00'
                   property :effective_start_date,
                            type: %i[string null],
                            format: 'date-time',
-                           example: '2018-04-21T20:09:50Z'
+                           example: '2019-08-21T20:18:36.000+00:00'
                   property :source_date,
                            type: :string,
                            format: 'date-time',
-                           example: '2018-04-21T20:09:50Z'
+                           example: '2019-08-21T20:18:36.000+00:00'
                   property :updated_at,
                            type: :string,
                            format: 'date-time',
-                           example: '2018-04-21T20:09:50Z'
+                           example: '2019-08-21T20:18:36.000+00:00'
+                  property :transaction_id,
+                           type: :string,
+                           example: '032e6d48-38ba-463c-969d-ce242e2f54fb'
                 end
 
                 property :residential_address, type: :object do
@@ -47,7 +50,7 @@ module Swagger
                            enum: ::Vet360::Models::Address::ADDRESS_TYPES,
                            example: ::Vet360::Models::Address::DOMESTIC
                   property :city, type: :string, example: 'Fulton'
-                  property :country_name, type: :string, example: 'United States of America'
+                  property :country_name, type: :string, example: 'United States'
                   property :country_code_iso2, type: %i[string null], example: 'US'
                   property :country_code_iso3, type: %i[string null], example: 'USA'
                   property :country_code_fips, type: %i[string null], example: 'US'
@@ -77,6 +80,9 @@ module Swagger
                            type: :string,
                            format: 'date-time',
                            example: '2018-04-21T20:09:50Z'
+                  property :county_code,
+                           type: :string,
+                           example: '18097'
                 end
 
                 property :mailing_address, type: :object do
