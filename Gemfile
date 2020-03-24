@@ -110,6 +110,7 @@ gem 'vets_json_schema', git: 'https://github.com/department-of-veterans-affairs/
 gem 'virtus'
 gem 'will_paginate'
 gem 'zero_downtime_migrations'
+gem 'pry-rails'
 
 group :development do
   gem 'benchmark-ips'
