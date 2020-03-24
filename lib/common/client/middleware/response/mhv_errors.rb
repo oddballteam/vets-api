@@ -15,6 +15,7 @@ module Common
           #
           def on_complete(env)
             return if env.success?
+            binding.pry; fail
 
             env[:body]['code'] = env[:body].delete('errorCode')
             env[:body]['detail'] = env[:body].delete('message')
