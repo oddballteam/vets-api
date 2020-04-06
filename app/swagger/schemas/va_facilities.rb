@@ -36,8 +36,8 @@ module Swagger
           property :facility_type, type: :string, example: 'va_health_facility'
           property :classification, type: %i[string null], example: 'VA Medical Center'
           property :website, type: %i[string null], example: 'http://www.example.com'
-          property :lat, type: :number, format: :float, example: -122.5
-          property :long, type: :number, format: :float, example: 45.5
+          property :lat, type: :number, example: -122.5
+          property :long, type: :number, example: 45.5
           property :address do
             key :'$ref', :FacilityAddresses
           end
@@ -158,10 +158,10 @@ module Swagger
         key :type, :object
         key :description, 'Patient satisfaction scores for health facilities'
 
-        property :primary_care_routine, type: :number, format: :float, example: 95.2
-        property :primary_care_urgent, type: :number, format: :float, example: 89.1
-        property :specialty_care_routine, type: :number, format: :float, example: 78
-        property :specialty_care_urgent, type: :number, format: :float, example: 75.3
+        property :primary_care_routine, type: :number, example: 95.2
+        property :primary_care_urgent, type: :number, example: 89.1
+        property :specialty_care_routine, type: :number, example: 78
+        property :specialty_care_urgent, type: :number, example: 75.3
         property :effective_date, type: :string, format: :date, example: '2017-07-01'
       end
 
@@ -210,8 +210,8 @@ module Swagger
         key :type, :object
         key :description, 'Health facility wait times for new and established patients'
 
-        property :new, type: %i[number null], format: :float, example: 10.5
-        property :established, type: %i[number null], format: :float, example: 5.1
+        property :new, type: %i[number null], example: 10.5
+        property :established, type: %i[number null], example: 5.1
       end
     end
   end

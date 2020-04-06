@@ -71,12 +71,10 @@ module Swagger
               property :loa, type: :object do
                 property :current,
                          type: :integer,
-                         format: :int32,
                          example: 3,
                          description: 'NIST level of assurance, either 1 or 3'
                 property :highest,
                          type: :integer,
-                         format: :int32,
                          example: 3,
                          description: "level of assurance - During the login flow reference 'highest', otherwise, use
                                        'current'"

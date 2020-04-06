@@ -127,7 +127,8 @@ group :development do
 end
 
 group :test do
-  gem 'apivore'
+  gem 'apivore' # TODO delete
+  gem 'committee'
   gem 'awrence'
   gem 'faker'
   gem 'faker-medical'

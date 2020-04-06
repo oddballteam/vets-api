@@ -10,15 +10,7 @@ require 'bb/client'
 require 'support/bb_client_helpers'
 require 'support/pagerduty/services/spec_setup'
 
-RSpec.describe 'API doc validations', type: :request do
-  context 'json validation' do
-    it 'has valid json' do
-      get '/v0/apidocs.json'
-      json = response.body
-      JSON.parse(json).to_yaml
-    end
-  end
-end
+# TODO replace this file with the work in swagger_spec2
 
 RSpec.describe 'the API documentation', type: %i[apivore request], order: :defined do
   include AuthenticatedSessionHelper
